@@ -7,6 +7,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
@@ -29,8 +30,8 @@ public class one_windowController implements Initializable{
 	ParallelTransition pt= new ParallelTransition();
 	int delay;
 	String aglorithmString;
-
 	
+	public String[] Pse = new String[4];
 	
 	@FXML
 	private AnchorPane anchorpaneAnimation;
@@ -54,24 +55,41 @@ public class one_windowController implements Initializable{
         MediaView mediaView = new MediaView(mediaPlayer);
         anchorpaneAnimation.getChildren().add(mediaView);
         if (aglorithmString == "Bubble Sort") {
+        	Text tmp= new Text(Pse[0]);
+        	tmp.setX(30);
+        	tmp.setY(30);
+        	logAnchorPane.getChildren().add(tmp);
         	BubbleSort t1 = new BubbleSort();
         	t1.getData(itemColumn,mediaPlayer,delay);
         	Thread secondThread = new Thread(t1);
         	secondThread.start();
 		}
         if (aglorithmString == "Selection Sort") {
+        	Text tmp= new Text(Pse[1]);
+        	tmp.setX(30);
+        	tmp.setY(30);
+        	
+        	logAnchorPane.getChildren().add(tmp);
         	SelectionSort t2 = new SelectionSort();
         	t2.getData(itemColumn,mediaPlayer,delay);
         	Thread secondThread2 = new Thread(t2);
         	secondThread2.start();
 		}
         if (aglorithmString == "Merge Sort") {
+        	Text tmp= new Text(Pse[2]);
+        	tmp.setX(30);
+        	tmp.setY(30);
+        	logAnchorPane.getChildren().add(tmp);
         	MergeSort t3 = new MergeSort();
         	t3.getData(itemColumn, mediaPlayer, delay);
         	Thread secondThread3 = new Thread(t3);
         	secondThread3.start();
 		}
         if (aglorithmString == "Bucket Sort") {
+        	Text tmp= new Text(Pse[3]);
+        	tmp.setX(30);
+        	tmp.setY(30);
+        	logAnchorPane.getChildren().add(tmp);
         	BucketSort t4 = new BucketSort();
         	t4.getData(itemColumn, mediaPlayer, delay,listLabel);
         	Thread secondThread4 = new Thread(t4);
@@ -93,9 +111,12 @@ public class one_windowController implements Initializable{
     {
     	aglorithmString = aglorithmChoiceBox.getValue();
     	mediaPlayer.stop();
+    	logAnchorPane.getChildren().clear();  
     	anchorpaneAnimation.getChildren().clear();    	
     	dataList = new ColumnArray();
     	dataList.generateArray(aglorithmString);
+    	Pse=dataList.getPse();
+    	
     	checkAlgBucket=dataList.getCheckAlgBucket();
     	
     	if(checkAlgBucket==1)
@@ -106,6 +127,7 @@ public class one_windowController implements Initializable{
     		anchorpaneAnimation.getChildren().addAll(itemColumn);
         	anchorpaneAnimation.getChildren().addAll(listLabel);
         	anchorpaneAnimation.getChildren().addAll(listBuckets);
+        	
     	}else {
     		itemColumn = dataList.getItemColumn();
     		anchorpaneAnimation.getChildren().addAll(itemColumn);

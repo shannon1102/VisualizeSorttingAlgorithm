@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="17.0" layoutY="51.0" prefHeight="634.0" prefWidth="1145.0" style="-fx-background-color: #F0E68C;">
          <children>
-            <AnchorPane layoutX="10.0" layoutY="7.0" prefHeight="379.0" prefWidth="434.0" style="-fx-background-color: #FFFFFF;" />
+            <AnchorPane fx:id="logAnchorPane" layoutX="10.0" layoutY="7.0" prefHeight="379.0" prefWidth="434.0" style="-fx-background-color: #FFFFFF;" />
          </children></AnchorPane>
       <AnchorPane layoutX="26.0" layoutY="445.0" prefHeight="232.0" prefWidth="435.0" style="-fx-background-color: #FFFFFF;">
          <children>
